@@ -133,8 +133,8 @@ function themeShow() {
 
   const buattos = document.querySelectorAll(".theme-button");
 
-  for (let index = 0; index < buattos.length; index++) {
-    buattos[index].addEventListener("click", function () {
+  for (let i = 0; i < buattos.length; i++) {
+    buattos[i].addEventListener("click", function () {
       let current = document.getElementsByClassName("active");
       current[0].className = current[0].className.replace(" active", "");
       this.className += " active";

@@ -131,6 +131,11 @@ form {
   border: none;
   background-color: transparent;
   padding: 10px;
+  color: #f37907;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-left: 15px;
 }
 .contol-input {
   display: flex;
