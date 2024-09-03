@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather-App</title>
+    <link rel="shortcut icon" href="./image/cloudy-night-outline.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="https://www.rihadjahanopu.com/" target="_blank"><div class="block">
+<p class="footer"">Developed by <span class="deb-name">Rihad</span></p>
+<img src="https://i.postimg.cc/W3hCs9d0/output-EDIT-EDIT-removebg.png" class="footer-img" alt="">
+    </div>
+</a>
+    <div class="container">
+      <div class="info-pack">
+        <div class="clock" id="clock"></div>
+        <div class="battery"></div>
+        <div class="theme"></div>
+      </div>
+
+      <form action="" id="form"">
+        <div class="contol-input">
+ <input type="text" placeholder="Location Search" class="search" name="search" required/>
+          <button type="submit" class="btn"><ion-icon name="search-outline"></ion-icon></button>
+        </div>
+<div class="image-div">
+<img src="" alt="" class="weather-icon">
+</div>
+              <h1 class="name"></h1>
+              <h2 class="temp"></h2>
+              <p class="feels"></p>
+              <div class="brouser"></div>
+      </form>
+
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module">
+      import detectBrowser from "./script.js";
+      const safariUA =
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15";
+      const resultsDefault = detectBrowser();
+      const safariResults = detectBrowser(safariUA);
+      console.info(resultsDefault);
+      const update = document.querySelector(".brouser")
+
+      const { os  } = resultsDefault;
+      const html = `<h1 class="os">Your OS is: <span class="os-name">${os}</span></h1>`;
+      update.innerHTML += html;
+      </script>
+  <script src="script.js"></script>
+
+  </body>
+</html>
