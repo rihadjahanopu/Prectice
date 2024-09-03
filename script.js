@@ -81,36 +81,7 @@ whaterform.addEventListener("submit", async (e) => {
   setTimeout(timeShow, 1000);
 })();
 
-(function batteryShow() {
-  navigator
-    .getBattery()
-    .then(function (battery) {
-      setInterval(() => {
-        let batteryLevel = Math.round(battery.level * 100);
-        let batteryStatus = battery.charging ? "Charging" : "Not charging";
-
-        const batterybody = document.querySelector(".battery");
-        if (batteryStatus === "Charging") {
-          const html = `<div class="batteryindi">
-          <span class="buttery-level" "><ion-icon class="batteryicon" name="battery-charging-outline"></ion-icon></span>
-          <div className="batterytext">${batteryLevel}%</div>
-          </div>`;
-          batterybody.innerHTML = html;
-        } else if (batteryStatus === "Not charging") {
-          const html = `<div class="batteryindi">
-          <span class="buttery-level" "><ion-icon class="batteryicon"  name="battery-half-outline"></ion-icon></span>
-          <div className="batterytext">${batteryLevel}%</div>
-          </div>`;
-          batterybody.innerHTML = html;
-        }
-      }, 1000);
-    })
-    .catch(function (e) {
-      console.error(e);
-    });
-})();
-
-(function themeShow() {
+function themeShow() {
   const body = document.querySelector("body");
 
   function setTheme(theme) {
@@ -158,7 +129,8 @@ whaterform.addEventListener("submit", async (e) => {
   let theme = localStorage.getItem("theme");
   theme = theme ? theme : prefersDark.matches ? "dark" : "light";
   setTheme(theme);
-})();
+}
+themeShow();
 
 // device brousbdkkdh
 
@@ -253,3 +225,40 @@ const detectPlatform = (customUserAgent, customUserAgentData) => {
 };
 
 export default detectPlatform;
+
+console.log(detectPlatform());
+const { browser } = detectPlatform();
+console.log(browser);
+const browserinfo = browser;
+console.log(browserinfo);
+
+if (browserinfo === "chrome") {
+  (function batteryShow() {
+    navigator
+      .getBattery()
+      .then(function (battery) {
+        setInterval(() => {
+          let batteryLevel = Math.round(battery.level * 100);
+          let batteryStatus = battery.charging ? "Charging" : "Not charging";
+
+          const batterybody = document.querySelector(".battery");
+          if (batteryStatus === "Charging") {
+            const html = `<div class="batteryindi">
+          <span class="buttery-level" "><ion-icon class="batteryicon" name="battery-charging-outline"></ion-icon></span>
+          <div className="batterytext">${batteryLevel}%</div>
+          </div>`;
+            batterybody.innerHTML = html;
+          } else if (batteryStatus === "Not charging") {
+            const html = `<div class="batteryindi">
+          <span class="buttery-level" "><ion-icon class="batteryicon"  name="battery-half-outline"></ion-icon></span>
+          <div className="batterytext">${batteryLevel}%</div>
+          </div>`;
+            batterybody.innerHTML = html;
+          }
+        }, 1000);
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
+  })();
+}
