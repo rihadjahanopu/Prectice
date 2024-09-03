@@ -263,6 +263,10 @@ a {
   overflow: hidden;
 }
 
+.theme-buttons .active {
+  color: #ff8502;
+}
+
 @media screen and (max-width: 650px) {
   .block {
     display: none;

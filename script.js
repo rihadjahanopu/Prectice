@@ -104,18 +104,19 @@ function themeShow() {
   buttonContainer.classList.add("theme-buttons");
 
   const lightButton = document.createElement("span");
-
+  lightButton.classList.add("theme-button");
   lightButton.innerHTML = `<ion-icon class="theme-icon" name="sunny-outline"></ion-icon>`;
   lightButton.addEventListener("click", () => toggleTheme("light"));
 
   const darkButton = document.createElement("span");
+  darkButton.classList.add("theme-button");
   darkButton.innerHTML = `<ion-icon class="theme-icon" name="moon-outline"></ion-icon>`;
   darkButton.addEventListener("click", () => toggleTheme("dark"));
 
   const systemButton = document.createElement("span");
-  systemButton.innerHTML = `<ion-icon class="theme-icon" name="laptop-outline"></ion-icon>
-
-`;
+  systemButton.classList.add("theme-button");
+  systemButton.classList.add("active");
+  systemButton.innerHTML = `<ion-icon class="theme-icon" name="laptop-outline"></ion-icon>`;
   systemButton.addEventListener("click", () => {
     setTheme(prefersDark.matches ? "dark" : "light");
   });
@@ -129,10 +130,18 @@ function themeShow() {
   let theme = localStorage.getItem("theme");
   theme = theme ? theme : prefersDark.matches ? "dark" : "light";
   setTheme(theme);
+
+  const buattos = document.querySelectorAll(".theme-button");
+
+  for (let index = 0; index < buattos.length; index++) {
+    buattos[index].addEventListener("click", function () {
+      let current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
 }
 themeShow();
-
-// device brousbdkkdh
 
 const navigatorErrorMessage =
   "Could not find `userAgent` or `userAgentData` window.navigator properties to set `os`, `browser` and `version`";
