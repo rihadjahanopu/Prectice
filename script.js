@@ -133,13 +133,12 @@ function themeShow() {
 
   const buattos = document.querySelectorAll(".theme-button");
 
-  for (let i = 0; i < buattos.length; i++) {
-    buattos[i].addEventListener("click", function () {
-      let current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
+  buattos.forEach((item, index, array) => {
+    item.addEventListener("click", () => {
+      array.forEach((item) => item.classList.remove("active"));
+      item.classList.add("active");
     });
-  }
+  });
 }
 themeShow();
 
